@@ -1,0 +1,150 @@
+HEROKU PIPELINE
+Virtual Machine, where we can run our app, access the app from the outerworld in their local machine, they can access via heroku
+
+Cloud Platform where we can deploy the API like FLASk API
+DEPLOY A FLASK API in HEROKU
+Create and Open the account in 
+   1.HEROKU
+   2.github
+​
+Download and install 
+   1.HEROKU CLI (Command Line Interface)
+   
+   https://cli-assets.heroku.com/heroku-x64.exe
+   
+   
+   2.git
+   
+   https://git-scm.com/download/win
+   
+Verify it in the POWERSHELL.
+​
+​
+In ANACONDA prompt we need to create the environment to runour flask 
+command is 
+  
+  "conda create -n <envs_name> python==<version>"  
+                                     better to try the version of 3.7 or 3.6
+then activate the environment
+   
+   conda activate <envs_name>
+​
+In pycharm, create the project using previously used interpreter and then
+​
+we need select the created conda environment in the INTERPRETER,
+​
+after the project is created.
+​
+    Select the Interpreter in Pycharm project.
+​
+then install the flask library
+​
+<pip install flask> in the terminal
+Basic simple code in the flask using pycharm.
+​
+​
+​
+from flask import Flask
+​
+app=Flask(__name__)
+​
+@app.route('/',methods=["GET","POST"])
+def index():
+    return"<h1> This is flask application </h1>"
+    # <h1> and </h1> is the header1
+​
+if __name__ == "__main__" :
+    app.run()
+​
+TO deploy the app in heroku,
+we need to create two files in Heroku cloud, to create the Environment in Cloud
+    1. requirement.txt (all library)
+           command in TERMINAL= pip freeze>requirements.txt
+    
+    2.gunicorn file
+           command in TERMINAL = pip install gunicorn
+           
+           Able to run the file in hiroku which base is LINUX OS
+           
+     and again freeze the requirements
+         pip freeze>requirements.txt
+         
+         then gunicorn will appear in the requirement files
+         
+     3. Create the "Procfile" in the flask
+     
+      edit the file with notepad or pycharm editor
+      
+      web: gunicorn code.app
+      
+      web: gunicorn <file_name>: <Flask_objectName>
+      
+​
+       
+    We achieve the requirement to deploy the app in heroku
+    
+    get the source code via github and to heroku 
+    
+Heroku will read the Procfile.
+​
+we need to configure the email and username in the github
+​
+Open the powershell in the flask file folder
+Shift + Right click
+​
+to config the email ID
+​
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+​
+To link the file in the GitHub Repo
+enter the command in the Terminal 
+​
+git init
+​
+and the enter 
+​
+git add <space><.>
+​
+and then
+​
+git commit -m "first commit for the application"
+​
+and,
+​
+git branch -M main
+​
+and,
+​
+git remote add origin https://github.com/NeutrinoBoom/flask_heroku.git
+​
+and,
+​
+git push -u origin main
+​
+​
+NOW THE GITHUB REPO IS CREATED FOR THE CODE.
+HEROKU ACCOUNT:
+Open the heroku
+
+CLick New--> Create New app.
+
+Give the name of the app
+
+and then In Terminal of pycharm, enter the command
+
+heroku login -i
+
+Enter the credentials of the heroku login
+
+Email ID Password
+
+then copy the link from heroku
+
+heroku git:remote -a flask-heroku-4194
+then write,
+
+git push heroku main  
+becuase we change the branch name to main <git branch -M main>
+
+​
